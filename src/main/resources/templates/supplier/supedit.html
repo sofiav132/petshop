@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="includes/base :: css"></head>
+    <body>
+        <header th:replace="includes/base :: navbar"></header>
+
+        <main role="main " class="container">
+            <div th:replace="includes/base :: head-content"></div>
+            <div class="container mt-5">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h5 class="mb-4">Edit Supplier</h5>
+
+                        <form method="POST" action="#" th:action="@{/supplier/supstore}" th:object="${supplier}">
+                            <input type="hidden" th:field="*{id}" />
+                            <div class="form-group">
+                                <label for="example-supplier-name">Insert Supplier Name</label>
+                                <input th:field="*{name}" type="text" class="form-control" id="example-supplier-name" aria-describedby="emailHelp" placeholder="example: PT Unilever" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="example-supplier-tel">Insert Supplier Telephone</label>
+                                <textarea th:field="*{telephone}" class="form-control" id="example-supplier-tel" aria-describedby="emailHelp" placeholder="example: 08xxxxxxxx20"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="example-supplier-addr">Insert Supplier Address</label>
+                                <textarea th:field="*{address}" rows="3" class="form-control" id="example-supplier-addr" aria-describedby="emailHelp" placeholder="example: Jl.Katiya Asri No.100, Bekasi"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div th:replace="includes/base  :: footer"></div>
+        <div th:replace="includes/base  :: scripts"></div>
+    </body>
+</html>
