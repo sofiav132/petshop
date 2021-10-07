@@ -22,7 +22,10 @@ and open the template in the editor.
                                 <label for="example-product-name">Insert Product Name</label>
                                 <input th:field="*{name}" type="text" class="form-control" id="example-product-name" aria-describedby="emailHelp" placeholder="example: whiskas" required>
                             </div>
-                            
+                            <div class="form-group">
+                                <label for="example-product-sto">Insert Product Stock</label>
+                                <input th:field="*{stock}" type="text" class="form-control" id="example-product-sto" aria-describedby="emailHelp" placeholder="example: 100" required>
+                            </div>
                             <div class="form-group">
                                 <label for="example-product-pri">Insert Product Price</label>
                                 <textarea th:field="*{price}" class="form-control" id="example-product-pri" aria-describedby="emailHelp" placeholder="example: 100000"></textarea>
@@ -35,7 +38,7 @@ and open the template in the editor.
                             
                             <div class="form-group">
                                 <label for="example-product-exp">Insert Product Expired</label>
-                                <textarea th:field="*{expired}" class="form-control" id="example-product-exp" aria-describedby="emailHelp" placeholder="example: yyyy-mm-dd"></textarea>
+                                <textarea th:field="*{expired}" class="form-control" id="example-product-exp" aria-describedby="emailHelp" placeholder="example: YYYY-MM-DD"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

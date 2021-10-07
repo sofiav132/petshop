@@ -25,6 +25,17 @@ public class Product {
     
     @Column(name="name")
     private String name;
+
+    public String getStock() {
+        return stock;
+    }
+
+    public void setStock(String stock) {
+        this.stock = stock;
+    }
+    
+    @Column(name="stock")
+    private String stock;
     
     @Column(name="price")
     private String price;
