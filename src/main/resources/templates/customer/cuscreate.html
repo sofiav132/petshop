@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="includes/base :: css"></head>
+    <body>
+        <header th:replace="includes/base :: navbar"></header>
+
+        <main role="main " class="container">
+            <div th:replace="includes/base :: head-content"></div>
+            <div class="container mt-5">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <form method="POST" action="#" th:action="@{/customer/cusstore}" th:object="${customer}">
+                            <div class="form-group">
+                                <label for="example-customer-name">Insert Customer Name</label>
+                                <input th:field="*{name}" type="text" class="form-control" id="example-customer-name" aria-describedby="emailHelp" placeholder="example: BesariMaliik" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="example-customer-tel1">Insert Customer Telephone1</label>
+                                <textarea th:field="*{telephone1}" class="form-control" id="example-customer-tel1" aria-describedby="emailHelp" placeholder="example: 08xxxxxxxx20"></textarea>
+                            </div>
+                            
+                             <div class="form-group">
+                                <label for="example-customer-tel2">Insert Customer Telephone2</label>
+                                <textarea th:field="*{telephone2}" class="form-control" id="example-customer-tel2" aria-describedby="emailHelp" placeholder="example: 08xxxxxxxx20"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="example-customer-addr">Insert Customer Address</label>
+                                <textarea th:field="*{address}" rows="3" class="form-control" id="example-customer-addr" aria-describedby="emailHelp" placeholder="example: Jl.Katiya Asri No.100, Bekasi"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div th:replace="includes/base  :: footer"></div>
+        <div th:replace="includes/base  :: scripts"></div>    
+    </body>
+</html>
