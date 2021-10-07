@@ -48,4 +48,9 @@ public class EmployeeService implements EmployeeInterface {
     public void delete(long id) {
     this.employeeRepository.deleteById(id);
     }
+    
+    @Override
+    public List<Employee> findByAdminId(long admin_id) {
+        return employeeRepository.findByAdminId(admin_id);
+    }
 }

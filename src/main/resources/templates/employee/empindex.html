@@ -25,14 +25,16 @@ and open the template in the editor.
                                 <th>Gender</th>
                                 <th>Telephone</th>
                                 <th>Address</th>
+                                <th>Admin</th>
                                 <th>Action</th>
                             </tr>
-                            <tr th:each="employee : ${list}">
+                            <tr th:each="employee : ${employees}">
                                 <td th:text="${ employee.name }"></td>
-                                <td th:text="${ employee.divisi }"></td>
+                                <td th:text="${ employee.divisi.name }"></td>
                                 <td th:text="${ employee.gender }"></td>
                                 <td th:text="${ employee.telephone }"></td>
                                 <td th:text="${ employee.address }"></td>
+                                <td th:text="${ employee.admin.name }"></td>
                                 <td>
                                     <div class="btn-group " role="group " aria-lsabel="Basic example ">
                                         <a th:href="@{/employee/{id}/empedit(id=${ employee.id })}"  

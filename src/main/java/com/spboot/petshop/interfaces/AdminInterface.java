@@ -6,12 +6,14 @@
 package com.spboot.petshop.interfaces;
 
 import com.spboot.petshop.models.Admin;
+import java.util.List;
 
 /**
  *
  * @author BesariMaliik, Sofia
  */
 public interface AdminInterface {
+    List<Admin> getAll();
     void register(Admin admin) throws Exception;
     Admin auth(String email, String password) throws Exception;
 }

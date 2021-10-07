@@ -10,6 +10,7 @@ import com.spboot.petshop.models.Admin;
 import com.spboot.petshop.repositories.AdminRepository;
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,11 @@ import org.springframework.stereotype.Service;
 public class AdminService implements AdminInterface {
     @Autowired
     private AdminRepository adminRepository;
+    
+    @Override
+    public List<Admin> getAll() {
+        return adminRepository.findAll();
+    }
 
     @Override
     public void register(Admin admin) throws Exception {

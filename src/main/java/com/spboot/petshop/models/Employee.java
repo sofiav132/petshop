@@ -10,6 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -17,27 +20,41 @@ import javax.persistence.Table;
  * @author BesariMaliik, Sofia
  */
 @Entity
-@Table(name="tbemployee")
+@Table(name = "tbemployee")
 public class Employee {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
-    @Column(name="name")
+
+    @Column(name = "name")
     private String name;
-    
-    @Column(name="divisi")
-    private String divisi;
-    
-    @Column(name="gender")
+
+    @ManyToOne
+    @JoinColumn(name = "divisi_id")
+    private Divisi divisi;
+
+    @Column(name = "gender")
     private String gender;
-    
-    @Column(name="telephone")
+
+    @Column(name = "telephone")
     private String telephone;
-    
-    @Column(name="address")
+
+    @Column(name = "address")
     private String address;
     
+    @ManyToOne
+    @JoinColumn(name = "admin_id")
+    private Admin admin;
+    
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -46,11 +63,11 @@ public class Employee {
         return name;
     }
 
-    public void setDivisi(String divisi) {
+    public void setDivisi(Divisi divisi) {
         this.divisi = divisi;
     }
 
-    public String getDivisi() {
+    public Divisi getDivisi() {
         return divisi;
     }
 
@@ -61,15 +78,7 @@ public class Employee {
     public long getId() {
         return id;
     }
-    
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
 
-    public String getGender() {
-        return gender;
-    }
-    
     public String getTelephone() {
         return telephone;
     }
@@ -77,7 +86,7 @@ public class Employee {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
-    
+
     public void setAddress(String address) {
         this.address = address;
     }
@@ -85,5 +94,12 @@ public class Employee {
     public String getAddress() {
         return address;
     }
-    
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
+
+    public Admin getAdmin() {
+        return admin;
+    }
 }

@@ -5,8 +5,7 @@
  */
 package com.spboot.petshop.repositories;
 
-import com.spboot.petshop.models.Employee;
-import java.util.List;
+import com.spboot.petshop.models.Divisi;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author BesariMaliik, Sofia
  */
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Long>{
-    List<Employee> findByAdminId(long admin_id);
+public interface DivisiRepository extends JpaRepository<Divisi, Long>{
     
 }

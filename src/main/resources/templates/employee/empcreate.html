@@ -24,18 +24,19 @@ and open the template in the editor.
                             </div>
 
                             <div class="form-group">
-                                <label for="example-employee-divi">Insert Employee Divisi</label>
-                                <textarea th:field="*{divisi}" class="form-control" 
-                                          id="example-employee-divi" aria-describedby="emailHelp" 
-                                          placeholder="example: Staff"> 
-                                </textarea>
+                                <label for="example-employee-divi">Select Employee Divisi</label>
+                                <select th:field="*{divisi}" class="form-control">
+                                    <th:block th:each="divi : ${divisi}">
+                                        <option th:text="${divi.name}" th:value="${divi.id}"></option>
+                                    </th:block>
+                                </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="example-employee-gen">Insert Employee Gender</label>
                                 <textarea th:field="*{gender}" class="form-control" 
                                           id="example-employee-gen" aria-describedby="emailHelp" 
-                                          placeholder="example: Laki-Laki">
+                                          placeholder="Choose Between Female / Male">
                                 </textarea>
                             </div>
 

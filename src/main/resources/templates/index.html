@@ -14,7 +14,10 @@ and open the template in the editor.
             <div class="container">
                 <div class="row">
                     <div class="col-12 mt-5">
-                        <h1>Hello, Admin <span th:text="${session.name}"></span>! </h1>
+                        <h1>Hello, Admin <span th:text="${session.name}"></span>!</h1>
+                        <a th:href="@{/logout}">
+                            <button type="button" class="btn btn-danger">Logout</button>
+                        </a>
                     </div>
                 </div>
             </div>

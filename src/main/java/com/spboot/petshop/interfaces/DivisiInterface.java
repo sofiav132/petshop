@@ -5,17 +5,13 @@
  */
 package com.spboot.petshop.interfaces;
 
-import com.spboot.petshop.models.Employee;
+import com.spboot.petshop.models.Divisi;
 import java.util.List;
 
 /**
  *
  * @author BesariMaliik, Sofia
  */
-public interface EmployeeInterface {
-    List<Employee> getAll();
-    void empstore(Employee employee);
-    Employee getById(long id);
-    void delete(long id);
-    List<Employee> findByAdminId(long admin_id);
+public interface DivisiInterface {
+    List<Divisi> getAll();
 }
