@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author ACER
+ * @author BesariMaliik, Sofia
  */
 @Entity
 @Table(name = "admin")

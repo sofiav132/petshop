@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author ACER
+ * @author BesariMaliik, Sofia
  */
 @Service
 public class AdminService implements AdminInterface {

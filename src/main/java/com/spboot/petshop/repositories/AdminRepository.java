@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author ACER
+ * @author BesariMaliik, Sofia
  */
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Long> {

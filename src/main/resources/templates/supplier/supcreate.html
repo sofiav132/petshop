@@ -14,20 +14,29 @@ and open the template in the editor.
             <div class="container mt-5">
                 <div class="row mb-4">
                     <div class="col-12">
-                        <form method="POST" action="#" th:action="@{/supplier/supstore}" th:object="${supplier}">
+                        <form method="POST" action="#" th:action="@{/supplier/supstore}" 
+                              th:object="${supplier}">
                             <div class="form-group">
                                 <label for="example-supplier-name">Insert Supplier Name</label>
-                                <input th:field="*{name}" type="text" class="form-control" id="example-supplier-name" aria-describedby="emailHelp" placeholder="example: PT Unilever" required>
+                                <input th:field="*{name}" type="text" class="form-control" 
+                                       id="example-supplier-name" aria-describedby="emailHelp" 
+                                       placeholder="example: PT Unilever" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="example-supplier-tel">Insert Supplier Telephone</label>
-                                <textarea th:field="*{telephone}" class="form-control" id="example-supplier-tel" aria-describedby="emailHelp" placeholder="example: 08xxxxxxxx20"></textarea>
+                                <textarea th:field="*{telephone}" class="form-control" 
+                                          id="example-supplier-tel" aria-describedby="emailHelp" 
+                                          placeholder="example: 08xxxxxxxx20">
+                                </textarea>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="example-supplier-addr">Insert Supplier Address</label>
-                                <textarea th:field="*{address}" rows="3" class="form-control" id="example-supplier-addr" aria-describedby="emailHelp" placeholder="example: Jl.Katiya Asri No.100, Bekasi"></textarea>
+                                <textarea th:field="*{address}" rows="3" class="form-control" 
+                                          id="example-supplier-addr" aria-describedby="emailHelp" 
+                                          placeholder="example: Jl.Katiya Asri No.100, Bekasi">
+                                </textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

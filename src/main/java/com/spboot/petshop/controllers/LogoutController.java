@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
- * @author ACER
+ * @author BesariMaliik, Sofia
  */
 @Controller
 public class LogoutController {

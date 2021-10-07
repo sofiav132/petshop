@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
- * @author ACER
+ * @author BesariMaliik, Sofia
  */
 @Controller
 public class RegisterController {

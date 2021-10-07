@@ -9,7 +9,7 @@ import com.spboot.petshop.models.Admin;
 
 /**
  *
- * @author ACER
+ * @author BesariMaliik, Sofia
  */
 public interface AdminInterface {
     void register(Admin admin) throws Exception;

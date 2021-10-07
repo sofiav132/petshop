@@ -13,9 +13,11 @@ and open the template in the editor.
             <div class="container">
                 <div class="row">
                     <div class="col-12 mt-5">
-                        <h1>Hello Admin<span th:text="${session.name}"></span>! <a th:href="@{/product/procreate}"  class="btn btn-primary">
-                        <img src="img/icons8-plus-+-24.png">
-                           </a></h1>
+                        <h1>Hello Admin<span th:text="${session.name}"></span>! 
+                            <a th:href="@{/product/procreate}" class="btn btn-primary">
+                                <img src="img/icons8-plus-+-24.png">
+                            </a>
+                        </h1>
                         <table class="table table-hover">
                             <tr>
                                 <th>Name</th>
@@ -34,11 +36,16 @@ and open the template in the editor.
                                 <td>
                                 
                                     <div class="btn-group " role="group " aria-lsabel="Basic example ">
-                                        <a th:href="@{/product/{id}/proedit(id=${ product.id })}"  class="btn btn-info text-white ">
+                                        <a th:href="@{/product/{id}/proedit(id=${ product.id })}"  
+                                           class="btn btn-info text-white ">
                                             <i class='bx bx-pencil'></i>
                                         </a>
-                                        <form onSubmit="return confirm('Do you really want to delete?')" method="POST" action="#" th:action="@{/product/{id}/delete(id=${ product.id })}">
-                                            <button type="submit" class="btn btn-danger text-white "><i class='bx bx-trash'></i></button>
+                                        <form onSubmit="return confirm('Do you really want to delete?')" 
+                                              method="POST" action="#" 
+                                              th:action="@{/product/{id}/delete(id=${ product.id })}">
+                                            <button type="submit" class="btn btn-danger text-white ">
+                                                <i class='bx bx-trash'></i>
+                                            </button>
                                         </form>
                                     </div>
                                 </td>
