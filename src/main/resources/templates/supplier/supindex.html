@@ -31,9 +31,6 @@ and open the template in the editor.
                                 <td th:text="${ supplier.address }"></td>
                                 <td> 
                                     <div class="btn-group " role="group " aria-lsabel="Basic example ">
-                                        <a th:href="@{/supplier/supcreate}"  class="btn btn-primary">
-                                            <img src="img/icons8-plus-+-24.png">
-                                        </a>
                                         <a th:href="@{/supplier/{id}/supedit(id=${ supplier.id })}" 
                                            class="btn btn-info text-white ">
                                             <i class='bx bx-pencil'></i>

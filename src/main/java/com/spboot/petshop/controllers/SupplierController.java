@@ -41,7 +41,7 @@ public class SupplierController {
     @PostMapping("/supplier/supstore")
     public String supstore(@ModelAttribute("supplier") Supplier supplier) {
         supplierInterface.supstore(supplier);
-        return "redirect:/supplier/";
+        return "redirect:/supplier";
     }
     
     @GetMapping("/supplier/{id}/supedit")
@@ -55,6 +55,6 @@ public class SupplierController {
     @PostMapping("/supplier/{id}/delete")
     public String delete(@PathVariable(value = "id") long id) {
         supplierInterface.delete(id);
-        return "redirect:/supplier/" ;
+        return "redirect:/supplier" ;
     }
 }

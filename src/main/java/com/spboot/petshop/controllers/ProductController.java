@@ -41,7 +41,7 @@ public class ProductController {
     @PostMapping("/product/prostore")
     public String prostore(@ModelAttribute("product") Product product) {
         productInterface.prostore(product);
-        return "redirect:/product/";
+        return "redirect:/product";
     }
     
     @GetMapping("/product/{proid}/proedit")
@@ -55,7 +55,7 @@ public class ProductController {
     @PostMapping("/product/{proid}/delete")
     public String delete(@PathVariable(value = "proid") long proid) {
         productInterface.delete(proid);
-        return "redirect:/product/" ;
+        return "redirect:/product" ;
     } 
     
 }

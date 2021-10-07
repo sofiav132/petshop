@@ -43,7 +43,7 @@ public class CustomerController {
     @PostMapping("/customer/cusstore")
     public String cusstore(@ModelAttribute("customer") Customer customer) {
         customerInterface.cusstore(customer);
-        return "redirect:/customer/";
+        return "redirect:/customer";
     }
     
     @GetMapping("/customer/{custid}/cusedit")
@@ -57,7 +57,7 @@ public class CustomerController {
     @PostMapping("/customer/{custid}/delete")
     public String delete(@PathVariable(value = "custid") long custid) {
         customerInterface.delete(custid);
-        return "redirect:/customer/" ;
+        return "redirect:/customer" ;
     } 
     
 }

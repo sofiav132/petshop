@@ -41,7 +41,7 @@ public class EmployeeController {
     @PostMapping("/employee/empstore")
     public String empstore(@ModelAttribute("employee") Employee employee) {
         employeeInterface.empstore(employee);
-        return "redirect:/employee/";
+        return "redirect:/employee";
     }
     
     @GetMapping("/employee/{id}/empedit")
@@ -55,6 +55,6 @@ public class EmployeeController {
     @PostMapping("/employee/{id}/delete")
     public String delete(@PathVariable(value = "id") long id) {
         employeeInterface.delete(id);
-        return "redirect:/employee/" ;
+        return "redirect:/employee" ;
     }
 }
