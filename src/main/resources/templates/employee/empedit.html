@@ -15,7 +15,6 @@ and open the template in the editor.
                 <div class="row mb-4">
                     <div class="col-12">
                         <h5 class="mb-4">Edit Employee</h5>
-
                         <form method="POST" action="#" th:action="@{/employee/empstore}" 
                               th:object="${employee}">
                             <input type="hidden" th:field="*{id}" />

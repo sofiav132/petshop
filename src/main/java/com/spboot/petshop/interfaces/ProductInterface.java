@@ -17,4 +17,5 @@ public interface ProductInterface {
     void prostore(Product product);
     Product getById(long id);
     void delete(long id);
+    List<Product> findByAdminId(long admin_id);
 }

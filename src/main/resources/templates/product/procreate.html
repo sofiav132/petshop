@@ -51,6 +51,14 @@ and open the template in the editor.
                                           placeholder="example: YYYY-MM-DD ">
                                 </textarea>
                             </div>
+                            <div class="form-group">
+                                <label for="example-product-sup">Select Product Supplier</label>
+                                <select th:field="*{supplier}" class="form-control">
+                                    <th:block th:each="sup : ${tbsupplier}">
+                                        <option th:text="${sup.name}" th:value="${sup.id}"></option>
+                                    </th:block>
+                                </select>
+                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

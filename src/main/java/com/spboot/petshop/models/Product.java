@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -17,40 +19,40 @@ import javax.persistence.Table;
  * @author BesariMaliik, Sofia
  */
 @Entity
-@Table(name="tbproduct")
+@Table(name = "tbproduct")
 public class Product {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
-    @Column(name="name")
+
+    @Column(name = "name")
     private String name;
 
-    public String getStock() {
-        return stock;
-    }
-
-    public void setStock(String stock) {
-        this.stock = stock;
-    }
-    
-    @Column(name="stock")
+    @Column(name = "stock")
     private String stock;
-    
-    @Column(name="price")
+
+    @Column(name = "price")
     private String price;
-    
-    @Column(name="description")
+
+    @Column(name = "description")
     private String description;
-    
-     @Column(name="expired")
+
+    @Column(name = "expired")
     private String expired;
 
-  
+    @ManyToOne
+    @JoinColumn(name = "supplier_id")
+    private Supplier supplier;
+    
+    @ManyToOne
+    @JoinColumn(name="admin_id")
+    private Admin admin;
+
     public void setId(long proid) {
         this.id = proid;
     }
-    
+
     public long getId() {
         return id;
     }
@@ -86,7 +88,29 @@ public class Product {
     public void setExpired(String expired) {
         this.expired = expired;
     }
-    
 
+    public String getStock() {
+        return stock;
+    }
+
+    public void setStock(String stock) {
+        this.stock = stock;
+    }
     
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
+
+    public Supplier getSupplier() {
+        return supplier;
+    }
+    
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
+
+    public Admin getAdmin() {
+        return admin;
+    }
+
 }

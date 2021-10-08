@@ -48,4 +48,9 @@ public class ProductService implements ProductInterface {
     public void delete(long proid) {
     this.productRepository.deleteById(proid);
     }
+    
+    @Override
+    public List<Product> findByAdminId(long admin_id) {
+        return productRepository.findByAdminId(admin_id);
+    }
 }

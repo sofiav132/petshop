@@ -25,14 +25,17 @@ and open the template in the editor.
                                 <th>Price</th>
                                 <th>Description</th>
                                 <th>Expired</th>
+                                <th>Supplier</th>
                                 <th>Action</th>
                             </tr>
-                            <tr th:each="product : ${list}">
+                            <tr th:each="product : ${products}">
                                 <td th:text="${ product.name }"></td>
                                 <td th:text="${ product.stock }"></td>
                                 <td th:text="${ product.price }"></td>
                                 <td th:text="${ product.description }"></td>
                                 <td th:text="${ product.expired }"></td>
+                                <td th:text="${ product.supplier.name}"></td>
+                                <td th:text="${ product.admin.name}"></td>
                                 <td>
                                 
                                     <div class="btn-group " role="group " aria-lsabel="Basic example ">

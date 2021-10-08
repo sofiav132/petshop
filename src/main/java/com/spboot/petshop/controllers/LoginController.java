@@ -43,7 +43,7 @@ public class LoginController {
         Admin obj = adminInterface.auth(admin.getEmail(), admin.getPassword());
 
         if (obj == null) {
-            ra.addFlashAttribute("error", "Invalid adminname or password!");
+            ra.addFlashAttribute("error", "Invalid email or password!");
             return "redirect:/login";
         }
 

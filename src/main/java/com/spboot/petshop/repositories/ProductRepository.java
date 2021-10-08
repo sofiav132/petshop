@@ -6,6 +6,7 @@
 package com.spboot.petshop.repositories;
 
 import com.spboot.petshop.models.Product;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +16,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    
+    List<Product> findByAdminId(long admin_id);
 }
 

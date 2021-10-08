@@ -27,7 +27,7 @@ public class LogoutController {
         session.removeAttribute("loggedIn");
         session.invalidate();
         
-        ra.addFlashAttribute("success", "Berhasil keluar dari sistem!");
+        ra.addFlashAttribute("success", "You have logged out of the system!");
         return "redirect:/login";
     }
 
