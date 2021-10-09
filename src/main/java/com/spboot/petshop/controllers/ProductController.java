@@ -72,19 +72,19 @@ public class ProductController {
     }
 
     @GetMapping("/product/{proid}/proedit")
-    public String proedit(@PathVariable(value = "proid") long proid, Model model) {
+    public String proedit(@PathVariable(value = "id") long id, Model model) {
         List<Supplier> tbsupplier = supplierInterface.getAll();
         model.addAttribute("tbsupplier", tbsupplier);
         
-        Product product = productInterface.getById(proid);
+        Product product = productInterface.getById(id);
 
         model.addAttribute("product", product);
         return "product/proedit";
     }
 
-    @PostMapping("/product/{proid}/delete")
-    public String delete(@PathVariable(value = "proid") long proid) {
-        productInterface.delete(proid);
+    @PostMapping("/product/{id}/delete")
+    public String delete(@PathVariable(value = "id") long id) {
+        productInterface.delete(id);
         return "redirect:/product";
     }
 

@@ -49,8 +49,8 @@ public class Product {
     @JoinColumn(name="admin_id")
     private Admin admin;
 
-    public void setId(long proid) {
-        this.id = proid;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public long getId() {

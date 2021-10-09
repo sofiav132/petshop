@@ -33,11 +33,11 @@ public class ProductService implements ProductInterface {
     }
     
     @Override
-    public Product getById(long proid) {
-        Optional < Product > optional = productRepository.findById(proid);
+    public Product getById(long id) {
+        Optional < Product > optional = productRepository.findById(id);
 
      if (!optional.isPresent()) {
-        throw new RuntimeException(" Product not found for id : " + proid);
+        throw new RuntimeException(" Product not found for id : " + id);
      }
 
     Product product = optional.get();
@@ -45,8 +45,8 @@ public class ProductService implements ProductInterface {
     }
 
     @Override
-    public void delete(long proid) {
-    this.productRepository.deleteById(proid);
+    public void delete(long id) {
+    this.productRepository.deleteById(id);
     }
     
     @Override

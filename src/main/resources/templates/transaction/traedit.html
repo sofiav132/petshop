@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="includes/base :: css"></head>
+    <body>
+        <header th:replace="includes/base :: navbar"></header>
+
+        <main role="main " class="container">
+            <div th:replace="includes/base :: head-content"></div>
+            <div class="container mt-5">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h5 class="mb-4">Edit Transaction</h5>
+                        <form method="POST" action="#" th:action="@{/transaction/trastore}" 
+                              th:object="${transaction}">
+                            <input type="hidden" th:field="*{id}" />
+                            <div class="form-group">
+                                <label for="example-transaction-pro">Select Product Name</label>
+                                <select th:field="*{product}" class="form-control">
+                                    <th:block th:each="pro : ${tbproduct}">
+                                        <option th:text="${pro.name}" th:value="${pro.id}"></option>
+                                    </th:block>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="example-transaction-qua">Insert Product Quantity</label>
+                                <textarea th:field="*{quantity}" class="form-control" 
+                                          id="example-transaction-qua" aria-describedby="emailHelp" 
+                                          placeholder="0">
+                                </textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="example-transaction-cus">Select Customer Name</label>
+                                <select th:field="*{customer}" class="form-control">
+                                    <th:block th:each="cus : ${tbcustomer}">
+                                        <option th:text="${cus.name}" th:value="${cus.id}"></option>
+                                    </th:block>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div th:replace="includes/base  :: footer"></div>
+        <div th:replace="includes/base  :: scripts"></div>
+    </body>
+</html>
