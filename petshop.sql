@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2021 at 09:10 PM
+-- Generation Time: Oct 09, 2021 at 09:29 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -86,7 +86,8 @@ CREATE TABLE `tbcustomer` (
 --
 
 INSERT INTO `tbcustomer` (`id`, `name`, `telephone1`, `telephone2`, `address`, `created_at`) VALUES
-(7, 'nih ya', '09876543210', '23456789012', 'JL.Gatau No 34', '2021-10-06 20:41:16');
+(7, 'nih ya', '09876543210', '23456789012', 'JL.Gatau No 34', '2021-10-06 20:41:16'),
+(8, 'BesariMaliik', '0819277365', '08124356367', 'Jl.Tidak No.1', '2021-10-09 15:07:30');
 
 -- --------------------------------------------------------
 
@@ -111,7 +112,9 @@ CREATE TABLE `tbemployee` (
 
 INSERT INTO `tbemployee` (`id`, `name`, `divisi_id`, `gender`, `telephone`, `address`, `admin_id`, `created_at`) VALUES
 (2, 'Boy', 5, 'Male', '0812345678910', 'Jl.Manalagi No.100', 2, '2021-10-08 09:08:33'),
-(3, 'Boy', 5, 'Male', '0812345678910', 'Jl.Rumah No.10, Jakarta Timur', 1, '2021-10-08 11:43:42');
+(3, 'Boy', 5, 'Male', '0812345678910', 'Jl.Rumah No.10, Jakarta Timur', 1, '2021-10-08 11:43:42'),
+(4, 'Sofia', 5, 'Female', '08128966743', 'Jl.Manaya ', 1, '2021-10-09 21:09:56'),
+(5, 'Jojo', 6, 'Male', '08193364673', 'Jl.Disitu No.5,Jakarta Selatan', 1, '2021-10-09 22:52:22');
 
 -- --------------------------------------------------------
 
@@ -128,16 +131,19 @@ CREATE TABLE `tbproduct` (
   `expired` date NOT NULL,
   `supplier_id` int(11) NOT NULL,
   `admin_id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `product_id` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbproduct`
 --
 
-INSERT INTO `tbproduct` (`id`, `name`, `stock`, `price`, `description`, `expired`, `supplier_id`, `admin_id`, `created_at`) VALUES
-(1, 'Whiskas', 8, 8000, 'Makanan Kucing', '2022-10-01', 3, 1, '2021-10-08 12:08:24'),
-(2, 'Pedigree', 9, 30000, 'Makanan anjing', '2022-10-08', 5, 1, '2021-10-08 14:58:44');
+INSERT INTO `tbproduct` (`id`, `name`, `stock`, `price`, `description`, `expired`, `supplier_id`, `admin_id`, `created_at`, `product_id`) VALUES
+(1, 'Whiskas', 8, 8000, 'Makanan Kucing', '2022-10-01', 3, 1, '2021-10-08 12:08:24', NULL),
+(2, 'Pedigree', 9, 30000, 'Makanan anjing', '2022-10-08', 5, 1, '2021-10-08 14:58:44', NULL),
+(3, 'Me-O', 10, 20000, 'Makanan Kucing', '2022-10-08', 5, 1, '2021-10-09 17:20:16', NULL),
+(4, 'Alpo', 15, 50000, 'Makanan Anjing', '2023-12-01', 6, 1, '2021-10-09 22:54:25', NULL);
 
 -- --------------------------------------------------------
 
@@ -160,7 +166,8 @@ CREATE TABLE `tbsupplier` (
 INSERT INTO `tbsupplier` (`id`, `name`, `telephone`, `address`, `created_at`) VALUES
 (3, 'PT Unilever', '0213456789', 'Jl.Gudang No.100-110, Bekasi', '2021-10-08 11:44:47'),
 (4, 'PT Kino', '0215678930', 'Jl.Saluran No.100, Jakarta Selatan', '2021-10-08 11:46:21'),
-(5, 'Mars,Inc', '021345678', 'Jl.Melayu No.11, Bandung', '2021-10-08 14:56:44');
+(5, 'Mars,Inc', '021345678', 'Jl.Melayu No.11, Bandung', '2021-10-08 14:56:44'),
+(6, 'Purina,Inc', '0213456802', 'Jl.Jakarta', '2021-10-09 22:53:21');
 
 -- --------------------------------------------------------
 
@@ -170,10 +177,10 @@ INSERT INTO `tbsupplier` (`id`, `name`, `telephone`, `address`, `created_at`) VA
 
 CREATE TABLE `tbtransaction` (
   `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
   `quantity` int(11) DEFAULT 0,
   `customer_id` int(11) NOT NULL,
-  `customer_name` varchar(100) NOT NULL,
+  `admin_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -181,19 +188,8 @@ CREATE TABLE `tbtransaction` (
 -- Dumping data for table `tbtransaction`
 --
 
-INSERT INTO `tbtransaction` (`id`, `product_id`, `quantity`, `customer_id`, `customer_name`, `created_at`) VALUES
-(5, 1, 2, 7, 'nih ya', '2021-10-09 02:10:08');
-
---
--- Triggers `tbtransaction`
---
-DELIMITER $$
-CREATE TRIGGER `TG_TRANSACTIONUPDATE_STOCK` AFTER INSERT ON `tbtransaction` FOR EACH ROW BEGIN
- UPDATE tbproduct SET stock=stock-NEW.quantity
- WHERE id=NEW.product_id;
-END
-$$
-DELIMITER ;
+INSERT INTO `tbtransaction` (`id`, `product_id`, `quantity`, `customer_id`, `admin_id`, `created_at`) VALUES
+(3, NULL, NULL, 7, 1, '2021-10-10 02:03:01');
 
 --
 -- Indexes for dumped tables
@@ -245,7 +241,8 @@ ALTER TABLE `tbsupplier`
 ALTER TABLE `tbtransaction`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_id` (`product_id`),
-  ADD KEY `customer_id` (`customer_id`);
+  ADD KEY `customer_id` (`customer_id`),
+  ADD KEY `admin_id` (`admin_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -267,31 +264,31 @@ ALTER TABLE `divisi`
 -- AUTO_INCREMENT for table `tbcustomer`
 --
 ALTER TABLE `tbcustomer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbemployee`
 --
 ALTER TABLE `tbemployee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbproduct`
 --
 ALTER TABLE `tbproduct`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbsupplier`
 --
 ALTER TABLE `tbsupplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbtransaction`
 --
 ALTER TABLE `tbtransaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -316,7 +313,8 @@ ALTER TABLE `tbproduct`
 --
 ALTER TABLE `tbtransaction`
   ADD CONSTRAINT `tbtransaction_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `tbproduct` (`id`),
-  ADD CONSTRAINT `tbtransaction_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `tbcustomer` (`id`);
+  ADD CONSTRAINT `tbtransaction_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `tbcustomer` (`id`),
+  ADD CONSTRAINT `tbtransaction_ibfk_3` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
