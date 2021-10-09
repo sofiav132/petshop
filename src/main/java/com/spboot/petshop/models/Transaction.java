@@ -31,7 +31,7 @@ public class Transaction {
 
     @OneToMany
     @JoinColumn(name = "product_id")
-    private List<Product> tbproduct = new ArrayList<>();
+    private List<Product> product = new ArrayList<>();
 
     @Column(name = "quantity")
     private String quantity;
@@ -52,12 +52,12 @@ public class Transaction {
         return id;
     }
     
-    public List<Product> getTbproduct() {
-        return tbproduct;
+    public List<Product> getproduct() {
+        return product;
     }
 
-    public void setTbproduct(List<Product> tbproduct) {
-        this.tbproduct = tbproduct;
+    public void setTbproduct(List<Product> product) {
+        this.product = product;
     }
     
     public String getQuantity() {
