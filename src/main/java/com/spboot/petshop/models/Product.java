@@ -30,10 +30,10 @@ public class Product {
     private String name;
 
     @Column(name = "stock")
-    private String stock;
+    private Integer stock;
 
     @Column(name = "price")
-    private String price;
+    private Integer price;
 
     @Column(name = "description")
     private String description;
@@ -65,11 +65,11 @@ public class Product {
         this.name = name;
     }
 
-    public String getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -89,11 +89,11 @@ public class Product {
         this.expired = expired;
     }
 
-    public String getStock() {
+    public Integer getStock() {
         return stock;
     }
 
-    public void setStock(String stock) {
+    public void setStock(Integer stock) {
         this.stock = stock;
     }
     

@@ -29,12 +29,12 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "product_id")
-    private List<Product> product = new ArrayList<>();
+    private Product product;
 
     @Column(name = "quantity")
-    private String quantity;
+    private Integer quantity;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
@@ -52,19 +52,19 @@ public class Transaction {
         return id;
     }
     
-    public List<Product> getproduct() {
-        return product;
-    }
-
-    public void setTbproduct(List<Product> product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
+
+    public Product getProduct() {
+        return product;
+    }
     
-    public String getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 

@@ -59,8 +59,8 @@ public class TransactionController {
         List<Product> tbproduct = productInterface.getAll();
         model.addAttribute("tbproduct", tbproduct);
 
-        List<Customer> customer = customerInterface.getAll();
-        model.addAttribute("customer", customer);
+        List<Customer> tbcustomer = customerInterface.getAll();
+        model.addAttribute("tbcustomer", tbcustomer);
 
         Transaction transaction = new Transaction();
         model.addAttribute("transaction", transaction);
