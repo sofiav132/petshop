@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2021 at 09:29 PM
+-- Generation Time: Oct 10, 2021 at 08:32 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -126,24 +126,23 @@ CREATE TABLE `tbproduct` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `stock` int(11) DEFAULT 0,
-  `price` int(20) DEFAULT NULL,
+  `price` int(20) NOT NULL,
   `description` varchar(1000) NOT NULL,
   `expired` date NOT NULL,
   `supplier_id` int(11) NOT NULL,
   `admin_id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `product_id` bigint(20) DEFAULT NULL
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbproduct`
 --
 
-INSERT INTO `tbproduct` (`id`, `name`, `stock`, `price`, `description`, `expired`, `supplier_id`, `admin_id`, `created_at`, `product_id`) VALUES
-(1, 'Whiskas', 8, 8000, 'Makanan Kucing', '2022-10-01', 3, 1, '2021-10-08 12:08:24', NULL),
-(2, 'Pedigree', 9, 30000, 'Makanan anjing', '2022-10-08', 5, 1, '2021-10-08 14:58:44', NULL),
-(3, 'Me-O', 10, 20000, 'Makanan Kucing', '2022-10-08', 5, 1, '2021-10-09 17:20:16', NULL),
-(4, 'Alpo', 15, 50000, 'Makanan Anjing', '2023-12-01', 6, 1, '2021-10-09 22:54:25', NULL);
+INSERT INTO `tbproduct` (`id`, `name`, `stock`, `price`, `description`, `expired`, `supplier_id`, `admin_id`, `created_at`) VALUES
+(1, 'Whiskas', 8, 8000, 'Makanan Kucing', '2022-10-01', 3, 1, '2021-10-08 12:08:24'),
+(2, 'Pedigree', 9, 30000, 'Makanan anjing', '2022-10-08', 5, 1, '2021-10-08 14:58:44'),
+(3, 'Me-O', 10, 20000, 'Makanan Kucing', '2022-10-08', 5, 1, '2021-10-09 17:20:16'),
+(4, 'Alpo', 14, 50000, 'Makanan Anjing', '2023-12-01', 6, 1, '2021-10-09 22:54:25');
 
 -- --------------------------------------------------------
 
@@ -177,7 +176,7 @@ INSERT INTO `tbsupplier` (`id`, `name`, `telephone`, `address`, `created_at`) VA
 
 CREATE TABLE `tbtransaction` (
   `id` int(11) NOT NULL,
-  `product_id` int(11) DEFAULT NULL,
+  `product_id` int(11) NOT NULL,
   `quantity` int(11) DEFAULT 0,
   `customer_id` int(11) NOT NULL,
   `admin_id` int(11) NOT NULL,
@@ -189,7 +188,19 @@ CREATE TABLE `tbtransaction` (
 --
 
 INSERT INTO `tbtransaction` (`id`, `product_id`, `quantity`, `customer_id`, `admin_id`, `created_at`) VALUES
-(3, NULL, NULL, 7, 1, '2021-10-10 02:03:01');
+(4, 2, 2, 7, 1, '2021-10-10 13:23:38'),
+(5, 4, 1, 8, 1, '2021-10-10 13:30:44');
+
+--
+-- Triggers `tbtransaction`
+--
+DELIMITER $$
+CREATE TRIGGER `TG_TRANSACTIONUPDATE_STOCK` AFTER INSERT ON `tbtransaction` FOR EACH ROW BEGIN
+ UPDATE tbproduct SET stock=stock-NEW.quantity
+ WHERE id=NEW.product_id;
+END
+$$
+DELIMITER ;
 
 --
 -- Indexes for dumped tables
@@ -288,7 +299,7 @@ ALTER TABLE `tbsupplier`
 -- AUTO_INCREMENT for table `tbtransaction`
 --
 ALTER TABLE `tbtransaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
